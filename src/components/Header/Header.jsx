@@ -1,7 +1,7 @@
 function Header() {
     return (
         <header>
-            <h1>Perfil do Usuário</h1>
+            <h1>Interestelar</h1>
         </header>
     )
 }
