@@ -1,17 +1,22 @@
 import { useState } from "react";
 import "./style.css";
 
-function Post() {
+function Post({title, author, image, article, }) {
     const [curtidas, setCurtidas] = useState(0); // [estado, função que modifica o estado]
+    const [descurtidas, setDescurtidas] = useState(0);
     const [carregando, setCarregando] = useState(true);
 
     function adicionarCurtida() {
-        setCurtidas(curtidas+1)
+        setCurtidas(curtidas + 1);
+    }
+
+    function adicionarDescurtida() {
+        setDescurtidas(descurtidas + 1);
     }
 
     setTimeout(() => {
         setCarregando(false);
-    }, 3000)
+    }, 3000);
 
     if (carregando) {
         return (
@@ -23,12 +28,30 @@ function Post() {
 
     return (
         <div className="post">
-            <p>
-            Na Interestelar, somos dedicados a expandir os limites da presença humana além das estrelas. Como pioneiros na exploração interestelar e no desenvolvimento de tecnologias espaciais sustentáveis, nossa missão é encontrar novos horizontes e oportunidades para a vida além da Terra. Combinando inovação, colaboração e uma busca incansável por descobertas, buscamos conectar a humanidade às infinitas possibilidades do cosmos. Acreditamos que o futuro não está apenas lá fora — ele é nosso para construir.            
-            </p>
-            <button onClick={adicionarCurtida}>
-                Curtidas: {curtidas}
-            </button>
+            <article>
+                <h1> { title } </h1>
+
+                <div className="author">
+                    <img src={image} width={20} alt="Author" />
+                    <p>{author}</p>
+                </div>
+
+
+                <button onClick={adicionarCurtida}>
+                    👍: {curtidas}
+                </button>
+                <button onClick={adicionarDescurtida}>
+                    👎: {descurtidas}
+                </button>
+
+                {curtidas >= 10 && <span className="popular">POST POPULAR!</span>}
+
+                <p>
+                    <em>Tempo de leitura: 1 min.</em>
+                </p>
+
+                <p>{article}</p>
+            </article>
         </div>
     );
 }
