@@ -1,8 +1,8 @@
-import { useState } from "react";
-import "./style.css";
+import { useState, useEffect } from "react";
+import "./Post.css";
 
-function Post({title, author, image, article, time_reading}) {
-    const [curtidas, setCurtidas] = useState(0); // [estado, função que modifica o estado]
+function Post({ title, author, image, article, time_reading }) {
+    const [curtidas, setCurtidas] = useState(0);
     const [descurtidas, setDescurtidas] = useState(0);
     const [carregando, setCarregando] = useState(true);
 
@@ -14,9 +14,13 @@ function Post({title, author, image, article, time_reading}) {
         setDescurtidas(descurtidas + 1);
     }
 
-    setTimeout(() => {
-        setCarregando(false);
-    }, 3000);
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setCarregando(false);
+        }, 3000);
+
+        return () => clearTimeout(timer);
+    }, []);
 
     if (carregando) {
         return (
@@ -26,22 +30,25 @@ function Post({title, author, image, article, time_reading}) {
         );
     }
 
+    function mostrarAlerta() {
+        alert(`Matéria: ${title}\nAutor: ${author}\nTempo de Leitura: ${time_reading}min.\nPessoas que gostaram: ${curtidas}\nPessoas que não gostaram muito: ${descurtidas}`);
+    }
+    
+
     return (
         <div className="post">
             <article>
-                <h1> { title } </h1>
-
-                <div className="author">
-                    <img src={image} alt="Author" />
-                    <p>{author}</p>
+                <h1>{title}</h1>
+                <div>
+                    <img src={image} alt="Post" />
+                    {/* <small><em>Artigo de {author}</em></small> */}
                 </div>
-
 
                 <button onClick={adicionarCurtida}>
                     👍: {curtidas}
                 </button>
                 <button onClick={adicionarDescurtida}>
-                    👎: {descurtidas}
+                    👎{/* {descurtidas} */}
                 </button>
 
                 {curtidas >= 10 && <span className="popular">POST POPULAR!</span>}
@@ -51,6 +58,10 @@ function Post({title, author, image, article, time_reading}) {
                 </p>
 
                 <p>{article}</p>
+
+                <button onClick={mostrarAlerta}>
+                    Informações do Post
+                </button>
             </article>
         </div>
     );

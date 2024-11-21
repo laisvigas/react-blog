@@ -1,6 +1,3 @@
-import "./style.css"
-
-
 function UserCard({ avatar, name, age, occupation }) {
 const carregando = false;
 if (carregando) {
@@ -10,8 +7,6 @@ if (carregando) {
         </div>
         );
 }
-
-
 
 return (
     <div className="user-card">

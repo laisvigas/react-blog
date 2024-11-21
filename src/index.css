@@ -1,3 +1,39 @@
-* {
-    font-family: Arial, Helvetica, sans-serif;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f9f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #114e60;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+button {
+    background-color: #6eb1a8;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #5a9a8e;
+}
+
+em {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+footer {
+    text-align: center;
 }
