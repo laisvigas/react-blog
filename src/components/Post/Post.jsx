@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./style.css";
 
-function Post({title, author, image, article, }) {
+function Post({title, author, image, article, time_reading}) {
     const [curtidas, setCurtidas] = useState(0); // [estado, função que modifica o estado]
     const [descurtidas, setDescurtidas] = useState(0);
     const [carregando, setCarregando] = useState(true);
@@ -32,7 +32,7 @@ function Post({title, author, image, article, }) {
                 <h1> { title } </h1>
 
                 <div className="author">
-                    <img src={image} width={20} alt="Author" />
+                    <img src={image} alt="Author" />
                     <p>{author}</p>
                 </div>
 
@@ -47,7 +47,7 @@ function Post({title, author, image, article, }) {
                 {curtidas >= 10 && <span className="popular">POST POPULAR!</span>}
 
                 <p>
-                    <em>Tempo de leitura: 1 min.</em>
+                    <em>Tempo de leitura: {time_reading} min.</em>
                 </p>
 
                 <p>{article}</p>
