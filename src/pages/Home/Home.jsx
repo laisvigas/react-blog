@@ -1,6 +1,4 @@
 import Post from "../../components/Post/Post";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import post_img_1 from "../../assets/post_img_1.jpeg";
 import post_img_2 from "../../assets/post_img_2.jpeg";
 import post_img_3 from "../../assets/post_img_3.jpeg";
@@ -49,9 +47,6 @@ const posts = [
 function Home() {
     return (
         <div>
-            <Header/>
-            <h1>Alice Vigas Yoga</h1>
-
             {posts.map((post) => (
                 <Post 
                     key={post.title} 
@@ -62,7 +57,6 @@ function Home() {
                     time_reading={post.time_reading} 
                 />
             ))}
-            <Footer/>
         </div>
     );
 }

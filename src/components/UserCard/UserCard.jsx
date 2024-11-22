@@ -1,4 +1,6 @@
-function UserCard({ avatar, name, age, occupation }) {
+import "./UserCard.css"
+
+function UserCard({ avatar, name, age, testimony }) {
 const carregando = false;
 if (carregando) {
     return (
@@ -11,10 +13,10 @@ if (carregando) {
 return (
     <div className="user-card">
     <ul>
-        <img src={avatar} alt="Foto de Perfil" width={300}/>
-        <li>Nome: {name}</li>
-        <li>Idade: {age}</li>
-        <li>Ocupação: {occupation ? occupation : "Não definido"}</li>
+        <img src={avatar} alt="Foto de Perfil"/>
+        <li>{name}</li>
+        <li>{age} anos</li>
+        <li>{testimony ? testimony : "Não definido"}</li>
     </ul>
     </div>
     );

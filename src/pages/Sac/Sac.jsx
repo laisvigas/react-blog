@@ -1,44 +1,51 @@
-import Form from "../../components/Form/Form"
-import Header from "../../components/Header/Header"
-import Footer from "../../components/Footer/Footer"
+import Form from "../../components/Form/Form";
+import "./Sac.css"
 
 const ajudas = [
     {
-        pergunta: "Como criar uma conta no blog?",
-        resposta: "Clique no botão 'Cadastrar' no canto superior direito da página, preencha o formulário com seus dados e finalize clicando em 'Criar Conta'."
+        pergunta: "Quais são os benefícios do Alice Vigas Yoga?",
+        resposta:
+            "O Alice Vigas Yoga combina práticas tradicionais e modernas que promovem o equilíbrio físico e mental, redução do estresse e aumento da flexibilidade.",
     },
     {
-        pergunta: "Como publicar um post?",
-        resposta: "Após fazer login, clique em 'Novo Post', preencha o título, o conteúdo e clique em 'Publicar'."
+        pergunta: "Como posso me inscrever nas aulas?",
+        resposta:
+            "Você pode se inscrever diretamente pelo nosso site na seção 'Inscreva-se' ou entrar em contato pelo WhatsApp disponível na página inicial.",
     },
     {
-        pergunta: "Como editar ou excluir um post?",
-        resposta: "Acesse sua lista de posts no perfil, clique no botão 'Editar' ou 'Excluir' ao lado do post que deseja modificar."
+        pergunta: "Preciso de experiência prévia para participar?",
+        resposta:
+            "Não, nossas aulas são projetadas para atender todos os níveis, desde iniciantes até praticantes avançados.",
     },
     {
-        pergunta: "Posso salvar posts como rascunho?",
-        resposta: "Sim, enquanto estiver criando ou editando um post, você pode clicar em 'Salvar como Rascunho' para salvar sem publicar."
-    }
+        pergunta: "Quais equipamentos são necessários para as aulas?",
+        resposta:
+            "Recomendamos um tapete de yoga, roupas confortáveis e, opcionalmente, blocos ou uma faixa para maior suporte durante as práticas.",
+    },
+    {
+        pergunta: "Há aulas disponíveis online?",
+        resposta:
+            "Sim, oferecemos aulas ao vivo e gravadas que você pode acessar de qualquer lugar. Basta se inscrever em nosso plano online.",
+    },
 ];
 
 function Sac() {
-  return (
-    <div>
-        <Header/>
-        <h1>SAC</h1>
-        <Form/>
-        <h2>Perguntas Frequentes</h2>
-        {ajudas.map(ajuda => {
-            return (
-                <div key={ajuda.pergunta}>
-                   <h3>{ajuda.pergunta}</h3>
-                   <p>{ajuda.resposta}</p>
+    return (
+        <div className="sac-container">
+            <Form />
+            <div className="faq-section">
+                <h2>Perguntas Frequentes</h2>
+                <div className="faq-grid">
+                    {ajudas.map((ajuda, index) => (
+                        <div className="faq-item" key={index}>
+                            <h3>{ajuda.pergunta}</h3>
+                            <p>{ajuda.resposta}</p>
+                        </div>
+                    ))}
                 </div>
-            )
-        })}
-        <Footer/>
-    </div>
-  )
+            </div>
+        </div>
+    );
 }
 
-export default Sac
+export default Sac;

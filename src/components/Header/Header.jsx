@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
-import "./Header.css";
 
 function Header() {
     return (
         <header>
+            <h1>Alice Vigas Yoga</h1>
             <ul>
                 <li>
                     <Link to="/">Home</Link>
                 </li>
 
                 <li>
-                    <Link to="/Users">Usuários</Link>
+                    <Link to="/Users">Depoimentos</Link>
                 </li>
 
                 <li>
@@ -18,7 +18,7 @@ function Header() {
                 </li>
 
                 <li>
-                    <Link to="/Sac">Sac</Link>
+                    <Link to="/Sac">Contatos</Link>
                 </li>
             </ul>
         </header>

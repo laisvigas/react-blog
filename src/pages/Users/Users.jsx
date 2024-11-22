@@ -2,20 +2,44 @@ import UserCard from '../../components/UserCard/UserCard'
 import img1 from "../../assets/img1.jpeg";
 import img2 from "../../assets/img2.jpeg";
 import img3 from "../../assets/img3.jpeg";
-import Header from '../../components/Header/Header';
-import Footer from '../../components/Footer/Footer';
 
 function Users() {
+  const users = [
+      { 
+          avatar: img1, 
+          name: "Clara Monteiro", 
+          age: 42, 
+          testimony: "A prática de yoga com o Alice Vigas mudou minha vida. Me sinto mais tranquila e equilibrada a cada aula!" 
+      },
+      { 
+          avatar: img2, 
+          name: "Maria Oliveira", 
+          age: 38, 
+          testimony: "Nunca pensei que yoga pudesse aliviar tanto meu estresse. Recomendo para todos que querem cuidar do corpo e da mente." 
+      },
+      { 
+          avatar: img3, 
+          name: "Laura Fernandes", 
+          age: 31, 
+          testimony: "O ambiente acolhedor e as aulas personalizadas são incríveis. Finalmente encontrei um espaço que combina com minha energia!" 
+      },
+  ];
+
   return (
-    <div>
-        <Header/>
-        <h1>Lista de Usuários</h1>
-        <UserCard avatar={img1} name="Maria Lopes" age="45 anos" occupation="Engenheiro" />
-        <UserCard avatar={img2} name="Joana Ferreira" age="35 anos" occupation="Astronauta" />
-        <UserCard avatar={img3} name="Emilia Silva" age="65 anos"/>
-        <Footer/>
-    </div>
-  )
+    <>
+      <div className="user-card-container">
+          {users.map((user, index) => (
+              <UserCard
+                  key={index}
+                  avatar={user.avatar}
+                  name={user.name}
+                  age={user.age}
+                  testimony={user.testimony}
+              />
+          ))}
+      </div>
+    </>
+  );
 }
 
-export default Users
+export default Users;
