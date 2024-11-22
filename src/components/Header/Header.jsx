@@ -20,6 +20,10 @@ function Header() {
                 <li>
                     <Link to="/Sac">Contatos</Link>
                 </li>
+
+                <li>
+                    <Link to="/Login">Login</Link>
+                </li>
             </ul>
         </header>
     )

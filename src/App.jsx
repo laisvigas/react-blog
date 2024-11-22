@@ -6,6 +6,7 @@ import About from "./pages/About/About";
 import NotFound from "./pages/NotFound/NotFound";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import Login from "./pages/Login/Login";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/Sac" element={<Sac />} />
             <Route path="/About" element={<About />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/Login" element={<Login/>}/>
           </Routes>
         </main>
         <Footer />
