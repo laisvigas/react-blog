@@ -7,6 +7,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Login from "./pages/Login/Login";
+import Signup from "./pages/Signup/Signup";
 
 function App() {
   return (
@@ -19,8 +20,9 @@ function App() {
             <Route path="/Users" element={<Users />} />
             <Route path="/Sac" element={<Sac />} />
             <Route path="/About" element={<About />} />
-            <Route path="*" element={<NotFound />} />
             <Route path="/Login" element={<Login/>}/>
+            <Route path="/Signup" element={<Signup/>}/>
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
