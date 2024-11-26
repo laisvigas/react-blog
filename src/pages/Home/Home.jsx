@@ -1,63 +1,77 @@
-import Post from "../../components/Post/Post";
-import post_img_1 from "../../assets/post_img_1.jpeg";
-import post_img_2 from "../../assets/post_img_2.jpeg";
-import post_img_3 from "../../assets/post_img_3.jpeg";
-import post_img_4 from "../../assets/post_img_4.jpeg";
-import post_img_5 from "../../assets/post_img_5.jpeg";
-
-const posts = [
-    {
-        title: "5 coisas que não te contaram sobre Yoga",
-        author: "Maria Ferreira da Silva",
-        article: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla.",
-        image: post_img_1,
-        time_reading: 1
-    },
-    {
-        title: "Yoga e terceira idade",
-        author: "Marcos Oliveira",
-        article: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla.",
-        image: post_img_2,
-        time_reading: 2
-    },
-    {
-        title: "Yoga na infância",
-        author: "Janaina",
-        article: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla.",
-        image: post_img_4,
-        time_reading: 3
-    },
-    {
-        title: "Casos curiosos que aconteceram durante sessões de Yoga",
-        author: "Alice Vigas",
-        article: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla.",
-        image: post_img_5,
-        time_reading: 4
-    },
-
-    {
-        title: "Yoga para animais?",
-        author: "Pedro Souza",
-        article: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti eius debitis corporis temporibus nisi. Incidunt dicta quas, ullam quidem temporibus voluptatibus suscipit consectetur sint, quisquam dolore molestias nostrum harum nulla.",
-        image: post_img_3,
-        time_reading: 5
-    }
-];
+import { buscarPost, salvarPost, editarPost, removerPost } from "../../firebase/firestore";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
 function Home() {
+
+    const [posts, setPosts] = useState([]);
+    const { handleSubmit, register, reset } = useForm();
+
+    async function salvarP(dados) {
+        await salvarPost(dados);
+        reset();
+        await buscarP();
+    }
+
+    async function buscarP() {
+        const posts = await buscarPost();
+        setPosts(posts);
+    }
+
+    async function removerP(id) {
+        await removerPost(id);
+        buscarP();
+    }
+
+    async function editarP(id) {
+        const titulo = window.prompt("Edite o título: ");
+        const conteudo = window.prompt("Edite o conteúdo: ");
+        if(titulo && conteudo) {
+            const dados = { titulo, conteudo };
+            await editarP(id, dados);
+            buscarP();
+        }
+    }
+
+    useEffect(() => {
+        buscarP();
+    }, []);
+
     return (
-        <div>
-            {posts.map((post) => (
-                <Post 
-                    key={post.title} 
-                    title={post.title} 
-                    author={post.author} 
-                    image={post.image} 
-                    article={post.article} 
-                    time_reading={post.time_reading} 
-                />
-            ))}
-        </div>
+        <form onSubmit={handleSubmit(salvarP)}>
+            <div>
+                {posts.map(p => (
+                    <div key={p.id} style={{ marginBottom: "20px" }}>
+                        <h1>{p.titulo}</h1>
+                        {p.imagem && <img src={p.imagem} alt={p.titulo} style={{ maxWidth: "100%", height: "auto" }} />}
+                        <p>{p.conteudo}</p>
+
+                        <button type="button" onClick={() => removerP(p.id)}>
+                            Excluir Post
+                        </button>
+
+                        <button type="button" onClick={() => editarP(p.id)}>
+                            Editar Post
+                        </button>
+                    </div>
+                ))}
+            </div>
+
+            <div>
+                <label htmlFor="titulo">Título</label>
+                <input type="text" id="titulo" {...register("titulo")} />
+            </div>
+            <div>
+                <label htmlFor="conteudo">Conteúdo</label>
+                <input type="text" id="conteudo" {...register("conteudo")} />
+            </div>
+            <div>
+                <label htmlFor="imagem">Link para a imagem</label>
+                <input type="text" id="imagem" {...register("imagem")} />
+            </div>
+
+            <button>Adicionar Post</button>
+        </form>
     );
 }
 

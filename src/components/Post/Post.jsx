@@ -37,33 +37,33 @@ function Post({ title, author, image, article, time_reading }) {
 
     return (
         <div className="post">
-            <article>
-                <h1>{title}</h1>
-                <div>
-                    <img src={image} alt="Post" />
-                    {/* <small><em>Artigo de {author}</em></small> */}
-                </div>
+        <article>
+            <h1>{title}</h1>
+            <div>
+                <img src={image} alt="Post" />
+                {/* <small><em>Artigo de {author}</em></small> */}
+            </div>
 
-                <button onClick={adicionarCurtida}>
-                    👍: {curtidas}
-                </button>
-                <button onClick={adicionarDescurtida}>
-                    👎{/* {descurtidas} */}
-                </button>
+            <button onClick={adicionarCurtida}>
+                👍: {curtidas}
+            </button>
+            <button onClick={adicionarDescurtida}>
+                👎{/* {descurtidas} */}
+            </button>
 
-                {curtidas >= 10 && <span className="popular">POST POPULAR!</span>}
+            {curtidas >= 10 && <span className="popular">POST POPULAR!</span>}
 
-                <p>
-                    <em>Tempo de leitura: {time_reading} min.</em>
-                </p>
+            <p>
+                <em>Tempo de leitura: {time_reading} min.</em>
+            </p>
 
-                <p>{article}</p>
+            <p>{article}</p>
 
-                <button onClick={mostrarAlerta}>
-                    Informações do Post
-                </button>
-            </article>
-        </div>
+            <button onClick={mostrarAlerta}>
+                Informações do Post
+            </button>
+        </article>
+    </div>
     );
 }
 
