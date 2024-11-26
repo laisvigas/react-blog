@@ -1,4 +1,4 @@
-import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, getDocs, getFirestore, doc, updateDoc } from "firebase/firestore";
 import app from "./firebase.config";
 
 const db = getFirestore(app);
@@ -8,13 +8,13 @@ const db = getFirestore(app);
 //deletDoc
 //getDoc
 
-async function salvar(dados) {
+async function salvarUs(dados) {
     const usuarios = collection(db, "usuarios");
     await addDoc(usuarios, dados);
     console.log("Usuário criado");
 }
 
-async function buscar() {
+async function buscarUs() {
     const usuarios = collection(db, "usuarios");
     const resultados = await getDocs(usuarios);
     const objetos = [];
@@ -23,8 +23,19 @@ async function buscar() {
             usuario.id = doc.id;
             objetos.push(usuario)
         });
-        console.log(objetos);
         return objetos; 
 }
 
-export { salvar, buscar };
+async function removerUs(id) {
+    const usuarios = collection(db, "usuarios");
+    const documento = doc(usuarios, id);
+    await deleteDoc(documento);
+}
+
+async function editarUs(id, dados) {
+    const usuarios = collection(db, "usuarios");
+    const documento = doc(usuarios, id);
+    await updateDoc(documento, dados);
+}
+
+export { salvarUs, buscarUs, removerUs, editarUs };
