@@ -11,19 +11,19 @@ const db = getFirestore(app);
 async function salvarUs(dados) {
     const usuarios = collection(db, "usuarios");
     await addDoc(usuarios, dados);
-    console.log("Usuário criado");
+    console.log("Usuário criado.");
 }
 
 async function buscarUs() {
     const usuarios = collection(db, "usuarios");
     const resultados = await getDocs(usuarios);
     const objetos = [];
-    resultados.forEach(doc => { 
-            const usuario = doc.data();
-            usuario.id = doc.id;
-            objetos.push(usuario)
-        });
-        return objetos; 
+    resultados.forEach(doc => {
+        const usuario = doc.data();
+        usuario.id = doc.id;
+        objetos.push(usuario);
+    });
+    return objetos;
 }
 
 async function removerUs(id) {
@@ -38,34 +38,42 @@ async function editarUs(id, dados) {
     await updateDoc(documento, dados);
 }
 
-async function salvarPost(dados) {
-    const posts = collection(db, "posts")
-    await addDoc(posts, dados);
-    console.log("Post criado")
-}
-
-async function buscarPost() {
+async function buscarPst() {
     const posts = collection(db, "posts");
     const resultados = await getDocs(posts);
     const objetos = [];
-    resultados.forEach(doc => { 
-            const post = doc.data();
-            post.id = doc.id;
-            objetos.push(post)
-        });
-        return objetos; 
+    resultados.forEach(doc => {
+        const post = doc.data();
+        post.id = doc.id;
+        objetos.push(post);
+    });
+    return objetos;
 }
 
-async function removerPost(id) {
+async function salvarPst(dados) {
+    const posts = collection(db, "posts");
+    await addDoc(posts, dados);
+}
+
+async function removerPst(id) {
     const posts = collection(db, "posts");
     const documento = doc(posts, id);
-    await deleteDoc(documento);
+    await deleteDoc(documento)
 }
 
-async function editarPost(id, dados) {
+async function editarPst(id, dados) {
     const posts = collection(db, "posts");
     const documento = doc(posts, id);
     await updateDoc(documento, dados);
 }
 
-export { salvarUs, buscarUs, removerUs, editarUs, salvarPost, buscarPost, removerPost, editarPost };
+export {
+    salvarUs,
+    buscarUs,
+    removerUs,
+    editarUs,
+    buscarPst,
+    salvarPst,
+    removerPst,
+    editarPst
+};

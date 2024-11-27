@@ -1,26 +1,34 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./Post.css";
+import Header from "../Header/Header";
+import { editarPst, removerPst } from "../../firebase/firestore";
 
-function Post({ title, author, image, article, time_reading }) {
-    const [curtidas, setCurtidas] = useState(0);
-    const [descurtidas, setDescurtidas] = useState(0);
+function Post(props) {
+
+    const [curtidas, setCurtidas] = useState(0); // [estado, funcao modificadora]
     const [carregando, setCarregando] = useState(true);
+    const [descurtidas, setDescurtidas] = useState(0);
+
+    async function removerPost() {
+        await removerPst(props.id);
+        props.buscarPosts();
+    }
+
+    async function editarPost() {
+        const titulo = window.prompt("Digite o tiulo", props.titulo);
+        if (titulo) {
+            await editarPst(props.id, { titulo });
+            props.buscarPosts();
+        }
+    }
 
     function adicionarCurtida() {
         setCurtidas(curtidas + 1);
     }
 
-    function adicionarDescurtida() {
-        setDescurtidas(descurtidas + 1);
-    }
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setCarregando(false);
-        }, 3000);
-
-        return () => clearTimeout(timer);
-    }, []);
+    setTimeout(() => {
+        setCarregando(false);
+    }, 3000);
 
     if (carregando) {
         return (
@@ -30,40 +38,43 @@ function Post({ title, author, image, article, time_reading }) {
         );
     }
 
-    function mostrarAlerta() {
-        alert(`Matéria: ${title}\nAutor: ${author}\nTempo de Leitura: ${time_reading}min.\nPessoas que gostaram: ${curtidas}\nPessoas que não gostaram muito: ${descurtidas}`);
-    }
-    
-
     return (
         <div className="post">
-        <article>
-            <h1>{title}</h1>
-            <div>
-                <img src={image} alt="Post" />
-                {/* <small><em>Artigo de {author}</em></small> */}
-            </div>
+            <h1>{props.titulo}</h1>
 
-            <button onClick={adicionarCurtida}>
-                👍: {curtidas}
-            </button>
-            <button onClick={adicionarDescurtida}>
-                👎{/* {descurtidas} */}
-            </button>
+            <img src={props.imagem} alt="Publicação" width={400} />
 
-            {curtidas >= 10 && <span className="popular">POST POPULAR!</span>}
-
+            <p>{props.conteudo}</p>
             <p>
-                <em>Tempo de leitura: {time_reading} min.</em>
+                <small>{props.autor}</small>
             </p>
 
-            <p>{article}</p>
-
-            <button onClick={mostrarAlerta}>
-                Informações do Post
+            <button onClick={adicionarCurtida}>
+                Curtidas: {curtidas}
             </button>
-        </article>
-    </div>
+
+            <button onClick={() => {
+                setDescurtidas(descurtidas + 1);
+            }}>
+                Descurtidas: {descurtidas}
+            </button>
+
+            <button onClick={() => {
+                window.alert(props.conteudo);
+            }}>
+                Detalhes
+            </button>
+
+            <button onClick={removerPost}>
+                Excluir
+            </button>
+
+            <button onClick={editarPost}>
+                Editar
+            </button>
+
+            {curtidas > 10 ? <p>Post Popular!</p> : null}
+        </div>
     );
 }
 
