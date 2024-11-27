@@ -24,6 +24,11 @@ function Header() {
                 <li>
                     <Link to="/Login">Login</Link>
                 </li>
+
+                <li>
+                    <Link to="/Signup">Signup</Link>
+                </li>
+                
             </ul>
         </header>
     )
