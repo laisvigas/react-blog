@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { login, loginGoogle } from "../../firebase/authentication";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/Auth";
+import { Button } from "react-bootstrap";
 
 function Login() {
 
@@ -57,9 +58,13 @@ function Login() {
                         })}/>
                 </div>
 
-                <button>Entrar</button>
+                <Button variant="primary" type="submit">
+                    Entrar
+                </Button>
 
-                <button type="button" onClick={entrarComGoogle}>Entrar com o Google</button>
+                <Button variant="dark" type="button" onClick={entrarComGoogle}>
+                    Entrar com o Google
+                </Button>
             </form>
         </div>
     );

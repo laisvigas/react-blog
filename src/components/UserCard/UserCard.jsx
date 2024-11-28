@@ -1,5 +1,3 @@
-import "./UserCard.css"
-
 function UserCard({ avatar, name, age, testimony }) {
 const carregando = false;
 if (carregando) {

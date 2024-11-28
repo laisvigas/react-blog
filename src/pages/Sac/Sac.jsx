@@ -1,5 +1,4 @@
 import Form from "../../components/Form/Form";
-import "./Sac.css"
 
 const ajudas = [
     {

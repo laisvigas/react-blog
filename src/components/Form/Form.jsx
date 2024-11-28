@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import "./Form.css";
 
 function Form() {
     const [nome, setNome] = useState(""); // estado

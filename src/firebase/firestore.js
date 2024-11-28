@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, getDocs, getFirestore, doc, updateDoc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, getDocs, getFirestore, doc, updateDoc, getDoc } from "firebase/firestore";
 import app from "./firebase.config";
 
 const db = getFirestore(app);
@@ -67,6 +67,22 @@ async function editarPst(id, dados) {
     await updateDoc(documento, dados);
 }
 
+async function buscarPstPorId(id) {
+    try {
+      const docRef = doc(db, "posts", id);
+      const docSnap = await getDoc(docRef);
+  
+      if (docSnap.exists()) {
+        return { id: docSnap.id, ...docSnap.data() };
+      } else {
+        throw new Error("Post não encontrado");
+      }
+    } catch (error) {
+      console.error("Erro ao buscar o post:", error);
+      throw error;
+    }
+  }
+
 export {
     salvarUs,
     buscarUs,
@@ -75,5 +91,6 @@ export {
     buscarPst,
     salvarPst,
     removerPst,
-    editarPst
+    editarPst,
+    buscarPstPorId
 };

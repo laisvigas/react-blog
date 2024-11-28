@@ -1,22 +1,18 @@
 import { useEffect, useState } from "react";
-import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
-import Post from "../../components/Post/Post";
 import { buscarPst, salvarPst } from "../../firebase/firestore";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../context/Auth";
-import { Navigate } from "react-router-dom";
-
+import { Navigate, Link } from "react-router-dom";
+import { Card } from "react-bootstrap";
 
 function FormPost({ buscarPosts }) {
-
     const { handleSubmit, register, reset } = useForm();
 
     async function salvarPost(dados) {
         await salvarPst(dados);
         buscarPosts();
         reset();
-    } 
+    }
 
     return (
         <form onSubmit={handleSubmit(salvarPost)}>
@@ -38,17 +34,15 @@ function FormPost({ buscarPosts }) {
             </div>
             <button>Postar</button>
         </form>
-    )
+    );
 }
 
-
 function Home() {
-
     const [posts, setPosts] = useState([]);
     const { autenticado } = useAuth();
 
     async function buscarPosts() {
-        const posts = await buscarPst()
+        const posts = await buscarPst();
         setPosts(posts);
     }
 
@@ -57,20 +51,36 @@ function Home() {
     }, []);
 
     //bloqueador
-    if (!autenticado) return <Navigate to="/Login"/>;
+    if (!autenticado) return <Navigate to="/Login" />;
 
     return (
-        <div>
+        <>
+            <div className="d-flex flex-wrap">
+                {posts.map((post) => (
+                    <Card key={post.id} style={{ width: "18rem", margin: "1rem" }}>
+                        <Card.Img
+                            variant="top"
+                            src={post.imagem}
+                            alt={post.titulo}
+                            className="img-fluid"
+                            style={{ objectFit: "cover", height: "200px", width: "100%" }}
+                        />
+                        <Card.Body>
+                            <Card.Title>{post.titulo}</Card.Title>
 
-            <h1>Home</h1>
+                            <Link to={`/post/${post.id}`}>
+                                <button className="btn btn-success">Ver artigo completo</button>
+                            </Link>
+                        </Card.Body>
+                    </Card>
+                ))}
+            </div>
+
+            <h2>Adicionar novo Post</h2>
 
             <FormPost buscarPosts={buscarPosts} />
-
-            {posts.map(post => {
-                return <Post {...post} key={post.id} buscarPosts={buscarPosts} />
-            })}
-        </div>
-    )
+        </>
+    );
 }
 
 export default Home;

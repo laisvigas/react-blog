@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Users from "./pages/Users/Users";
@@ -9,6 +10,7 @@ import Footer from "./components/Footer/Footer";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import { AuthProvider } from "./context/Auth";
+import Post from "./components/Post/Post";
 
 function App() {
   return (
@@ -18,12 +20,13 @@ function App() {
           <Header />
           <main> 
             <Routes>
-              <Route path="/" element={<Home/>} />
+              <Route path="/" element={<Home />} />
               <Route path="/Users" element={<Users />} />
               <Route path="/Sac" element={<Sac />} />
               <Route path="/About" element={<About />} />
-              <Route path="/Login" element={<Login/>}/>
-              <Route path="/Signup" element={<Signup/>}/>
+              <Route path="/Login" element={<Login />} />
+              <Route path="/Signup" element={<Signup />} />
+              <Route path="/post/:id" element={<Post />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
