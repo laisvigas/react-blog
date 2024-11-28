@@ -2,8 +2,14 @@ import UserCard from '../../components/UserCard/UserCard'
 import img1 from "../../assets/img1.jpeg";
 import img2 from "../../assets/img2.jpeg";
 import img3 from "../../assets/img3.jpeg";
+import { useAuth } from '../../context/Auth';
+import { Navigate } from 'react-router-dom';
 
 function Users() {
+    const { autenticado } = useAuth();
+
+    if(!autenticado) return <Navigate to="/Login"/>
+
   const users = [
       { 
           avatar: img1, 
