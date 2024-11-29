@@ -16,9 +16,9 @@ function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <div id="root">
+        <div className="d-flex flex-column min-vh-100">
           <Header />
-          <main> 
+          <main className="flex-grow-1">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/Users" element={<Users />} />

@@ -6,7 +6,7 @@ function Header() {
     const { logout } = useAuth();
 
     return (
-        <header>
+        <header className="d-flex flex-column">
             <Navbar bg="success" variant="dark" className="py-3">
                 <Container className="d-flex flex-column align-items-center text-center">
                     <Navbar.Brand className="w-100">
