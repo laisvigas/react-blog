@@ -37,11 +37,22 @@ function Post() {
 
     async function editarPost() {
         const titulo = window.prompt("Digite o título", post?.titulo || "");
-        if (titulo) {
-            await editarPst(post.id, { titulo });
-            setPost(prev => ({ ...prev, titulo }));
+        const imagem = window.prompt("Digite a URL da imagem", post?.imagem || "");
+        const conteudo = window.prompt("Digite o conteúdo", post?.conteudo || "");
+        const autor = window.prompt("Digite o nome do autor", post?.autor || "");
+            if (titulo && imagem && conteudo && autor) {
+            const postAtualizado = {
+                titulo,
+                imagem,
+                conteudo,
+                autor,
+            };
+    
+            await editarPst(post.id, postAtualizado);
+            setPost(prev => ({ ...prev, ...postAtualizado }));
         }
     }
+    
 
     function adicionarCurtida() {
         setCurtidas(curtidas + 1);
@@ -59,11 +70,21 @@ function Post() {
     }
 
     return (
-        <Container className="my-4">
+        <Container className="my-4 align-items-center">
             <Row className="justify-content-center">
                 <Col md={8}>
                     <Card>
-                        <Card.Img variant="top" src={post.imagem} alt="Publicação" />
+                        <Card.Img 
+                            variant="top" 
+                            src={post.imagem} 
+                            alt="Publicação" 
+                            className="img-fluid" 
+                            style={{ 
+                                width: "100%", 
+                                height: "300px", 
+                                objectFit: "cover" 
+                            }} 
+                        />
                         <Card.Body>
                             <Card.Title className="fs-3">{post.titulo} 
                                 {curtidas > 10 && <p className="mt-3 fs-6 text-success">Post Popular!</p>}
@@ -94,6 +115,7 @@ function Post() {
             </Row>
         </Container>
     );
+    
 }
 
 export default Post;
